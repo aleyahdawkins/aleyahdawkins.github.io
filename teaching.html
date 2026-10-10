@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Teaching</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    :root {
+      --ink: #25384a;
+      --muted: #5e6c78;
+      --accent: #346b79;
+      --paper: #f6f5f1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+    a { color: var(--accent); text-underline-offset: 4px; }
+    a:hover { color: #214854; }
+    a:focus-visible {
+      outline: 3px solid #b67e39;
+      outline-offset: 5px;
+      border-radius: 4px;
+    }
+    .skip-link {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      transform: translateY(-180%);
+      z-index: 3;
+      padding: 8px 16px;
+      background: white;
+      border-radius: 999px;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .header {
+      min-height: 360px;
+      padding: 95px 24px 100px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background-color: #243e50;
+      background-image: linear-gradient(180deg, rgba(17, 32, 47, .38), rgba(17, 32, 47, .72)), url('S_triangle.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      color: white;
+    }
+    .header h1 {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -.035em;
+      text-shadow: 0 3px 24px rgba(0, 0, 0, .28);
+    }
+    .header h1::after {
+      content: '';
+      display: block;
+      width: 65px;
+      height: 3px;
+      margin: 26px auto 0;
+      border-radius: 999px;
+      background: #c9dfe2;
+    }
+    .navbar {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      max-width: 1100px;
+      margin: -32px auto 0;
+      padding: 12px 16px;
+      background: #fff;
+      border: 1px solid #e1e5e6;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(27, 46, 60, .09);
+    }
+    .navbar a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+      border-radius: 999px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color .18s ease, color .18s ease;
+    }
+    .navbar a:hover {
+      background: #edf3f4;
+      color: #245360;
+    }
+    .navbar a.right { margin-left: auto; }
+    .navbar a[aria-current="page"] {
+      background: var(--ink);
+      color: white;
+    }
+    .navbar a[aria-current="page"]:hover { background: #3b5366; }
+    .row {
+      display: grid;
+      grid-template-columns: minmax(250px, 1fr) minmax(0, 2fr);
+      gap: 32px;
+      max-width: 1100px;
+      margin: 56px auto 70px;
+      align-items: start;
+    }
+    .side, .main {
+      padding: 36px;
+      border-radius: 20px;
+      border: 1px solid #e1e5e6;
+    }
+    .side { background: #eaf0f1; }
+    .main { background: white; }
+    h2 {
+      margin: 0 0 22px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 30px;
+      line-height: 1.25;
+      font-weight: 400;
+      letter-spacing: -.02em;
+    }
+    p { margin: 0 0 20px; }
+    p:last-child { margin-bottom: 0; }
+    .side p { font-size: 15px; overflow-wrap: anywhere; }
+    .side a { text-decoration: none; border-bottom: 1px solid #9bb4bd; }
+    .main p { color: var(--muted); }
+    .main p:first-of-type { color: var(--ink); font-size: 18px; }
+    .footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      border-top: 1px solid #dce2e3;
+    }
+    @media (max-width: 1160px) {
+      .navbar, .row, .footer { margin-left: 24px; margin-right: 24px; }
+    }
+    @media (max-width: 760px) {
+      .header { min-height: 290px; padding: 65px 20px 85px; }
+      .navbar { justify-content: center; border-radius: 20px; padding: 12px; gap: 6px; }
+      .navbar a { padding: 9px 14px; }
+      .navbar a.right { margin-left: 0; }
+      .row { grid-template-columns: 1fr; gap: 22px; margin-top: 32px; margin-bottom: 40px; }
+      .side, .main { padding: 28px; }
+    }
+    @media (max-width: 420px) {
+      .navbar, .row, .footer { margin-left: 16px; margin-right: 16px; }
+      .navbar a { font-size: 13px; padding: 9px 12px; }
+      .side, .main { padding: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .navbar a { transition: none; }
+    }
+  
+    .teaching-content { max-width: 1100px; margin: 56px auto 70px; }
+    .teaching-content .main { padding: clamp(24px, 5vw, 48px); }
+    .award { background: #eaf0f1; border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 18px 22px; margin-bottom: 38px; }
+    .teaching-content .main p { font-size: 16px; color: var(--muted); }
+    .teaching-content .main .award { color: var(--ink); }
+    .teaching-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-bottom: 30px; }
+    .teaching-group { padding: 24px; background: #f7f9f9; border: 1px solid #e1e5e6; border-radius: 16px; }
+    h3 { margin: 0 0 14px; font-size: 17px; font-weight: 600; color: var(--ink); }
+    .course-list { margin: 0; padding-left: 20px; }
+    .course-list li { padding: 10px 0 10px 4px; color: var(--muted); border-bottom: 1px solid #e5ebec; overflow-wrap: anywhere; }
+    .course-list li:first-child { padding-top: 0; }
+    .course-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .additional { border-top: 1px solid #e1e5e6; padding-top: 26px; }
+    @media (max-width: 1160px) { .teaching-content { margin-left: 24px; margin-right: 24px; } }
+    @media (max-width: 760px) { .teaching-content { margin-top: 32px; margin-bottom: 40px; } .teaching-groups { grid-template-columns: 1fr; gap: 18px; } }
+    @media (max-width: 420px) { .teaching-content { margin-left: 16px; margin-right: 16px; } .teaching-group { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#teaching-content">Skip to content</a>
+  <header class="header"><h1>Teaching</h1></header>
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="Dawkins_CV_26.pdf">Curriculum Vitae</a>
+    <a href="research.html">Research</a>
+    <a href="teaching.html" aria-current="page">Teaching</a>
+    <a href="striking_vixens.html">Strikes and Spares</a>
+    <a href="./" class="right">Home</a>
+  </nav>
+  <div class="teaching-content">
+    <main class="main" id="teaching-content" tabindex="-1">
+      <p class="award">In 2021 and 2022, I was awarded the <strong>TC Lim Award for Excellence in Teaching</strong> by the Mathematical Sciences Department at GMU.</p>
+      <section aria-labelledby="university-heading">
+        <h2 id="university-heading">George Mason University</h2>
+        <div class="teaching-groups">
+          <section class="teaching-group" aria-labelledby="instructor-heading">
+            <h3 id="instructor-heading">Instructor</h3>
+            <ul class="course-list">
+            <li>Summer 2022: Analytic Geometry and Calculus II (MATH 114)</li>
+            <li>Summer 2021: Analytic Geometry and Calculus II (2 sections) (MATH 114)</li>
+            <li>Summer 2020: Analytic Geometry and Calculus II (MATH 114)</li>
+            <li>Summer 2020: Introductory Calculus with Business Applications (MATH 108)</li>
+            </ul>
+          </section>
+          <section class="teaching-group" aria-labelledby="assistant-heading">
+            <h3 id="assistant-heading">Teaching Assistant</h3>
+            <ul class="course-list">
+            <li>Fall 2021: Analytic Geometry and Calculus I (MATH 113)</li>
+            <li>Spring 2021: Analytic Geometry and Calculus II (MATH 114)</li>
+            <li>Fall 2020: Analytic Geometry and Calculus II (MATH 114)</li>
+            <li>Spring 2020: Analytic Geometry and Calculus I (MATH 113)</li>
+            <li>Fall 2019: Analytic Geometry and Calculus I (MATH 113)</li>
+            </ul>
+          </section>
+        </div>
+        <p class="additional">Additionally, I served as a Graduate Learning Assistant at GMU during Summer 2022 as part of the <a href="https://science.gmu.edu/academics/departments-units/mathematical-sciences/opportunities-students">PhD Launchpad Program</a> and held a position at the <a href="https://science.gmu.edu/academics/departments-units/mathematical-sciences/math-tutoring/tutoring-center-hours-and">Math Tutoring Center</a> at GMU during Spring 2022.</p>
+      </section>
+    </main>
+  </div>
+  <footer class="footer"></footer>
+</body>
+</html>
