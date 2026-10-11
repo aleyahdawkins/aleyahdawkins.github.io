@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Spare The Shot</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#eaf0f5;background:#0c1926;color-scheme:dark}*{box-sizing:border-box}body{margin:0}main{max-width:1150px;margin:auto;padding:28px}h1{font-size:clamp(28px,5vw,42px);margin:5px 0}p{line-height:1.5;color:#b8c9d8}.eyebrow{color:#5be0bd;font-weight:700;letter-spacing:2px;font-size:12px}.layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}.card{background:#142738;border:1px solid #294255;border-radius:18px;padding:22px}h2{font-size:19px;margin:0 0 16px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{display:block;font-size:13px;color:#c1d1df}input,select{width:100%;margin-top:6px;padding:10px;border-radius:7px;border:1px solid #456075;background:#0c1926;color:white;font:inherit}button{cursor:pointer;border:1px solid #486278;background:#203c50;color:white;padding:10px 14px;border-radius:8px;font:inherit}button:hover{border-color:#5be0bd}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #5be0bd;outline-offset:3px}.primary{background:#5be0bd;color:#07241e;font-weight:700;border:0}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.pins{display:flex;flex-direction:column;align-items:center;gap:8px}.row{display:flex;gap:12px}.pin{width:42px;height:42px;border-radius:50%;padding:0;background:#edf4fa;color:#122536;font-weight:bold}.pin[aria-pressed=false]{background:#142738;color:#708999;border-style:dashed}.small{font-size:12px;line-height:1.5;color:#a5bdcf}svg{width:100%;height:470px;display:block}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{padding:12px;background:#0c1926;border-radius:10px;font-size:12px}.metric strong{display:block;font-size:23px;color:#5be0bd;margin:6px 0}details{margin-top:18px}summary{cursor:pointer;color:#5be0bd}a{color:#5be0bd}button:disabled{opacity:.4;cursor:default}@media(max-width:750px){main{padding:18px}.layout{grid-template-columns:1fr}.card{padding:18px}}@media print{body{background:white;color:black}.card{background:white;color:black}.actions,details{display:none}p,label,.small{color:#333}}
+/* Header and navigation match the academic pages. */
+.site-header {
+  min-height: 360px; padding: 85px 24px 100px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; color: white; background-color: #243e50;
+  background-image: linear-gradient(180deg, rgba(17,32,47,.38), rgba(17,32,47,.72)), url('IMG_7176.jpg');
+  background-repeat: no-repeat; background-position: 85% center; background-size: cover;
+}
+.site-header .eyebrow { color: #c9dfe2; letter-spacing: 3px; margin-bottom: 18px; }
+.site-header h1 {
+  margin: 0; font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(42px, 7vw, 80px); font-weight: 400; line-height: 1.12;
+  letter-spacing: -.035em; text-shadow: 0 3px 24px rgba(0,0,0,.28);
+}
+.site-header h1::after { content: ''; display: block; width: 65px; height: 3px;
+  margin: 26px auto 0; border-radius: 999px; background: #c9dfe2; }
+.navbar {
+  position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  max-width: 1100px; margin: -32px auto 0; padding: 12px 16px;
+  background: #fff; border: 1px solid #e1e5e6; border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.16); color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif; line-height: 1.75;
+}
+.navbar a {
+  display: inline-flex; justify-content: center; align-items: center;
+  padding: 10px 20px; border-radius: 999px; color: #25384a;
+  font-size: 16px; font-weight: 600; text-decoration: none;
+  transition: background-color .18s ease, color .18s ease;
+}
+.navbar a.right { margin-left: auto; }
+.navbar a:hover { background: #edf3f4; color: #245360; }
+.navbar a[aria-current="page"] { background: #25384a; color: white; }
+.navbar a[aria-current="page"]:hover { background: #3b5366; }
+.navbar a:focus-visible { outline: 3px solid #b67e39; outline-offset: 5px; }
+@media (max-width:1160px) { .navbar { margin-left: 24px; margin-right: 24px; } }
+@media (max-width:760px) {
+  .site-header { min-height: 290px; padding: 65px 20px 85px; }
+  .navbar { justify-content: center; border-radius: 20px; padding: 12px; gap: 6px; }
+  .navbar a { padding: 9px 14px; }
+  .navbar a.right { margin-left: 0; }
+}
+@media (max-width:420px) {
+  .navbar { margin-left: 16px; margin-right: 16px; }
+  .navbar a { font-size: 13px; padding: 9px 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .navbar a { transition: none; } }
+@media print { .site-header { min-height: auto; padding: 24px; background: white; color: black; } .navbar { display: none; } }
+
+/* Column container */
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 0%;
+  background-color: #f1f1f1;
+  padding: 60px;
+}
+
+/* Main column */
+.main {   
+  flex: 100%;
+  background-color: white;
+  padding: 60px;
+}
+</style></head>
+<body>
+<header class="site-header">
+  <div class="eyebrow">STRIKING VIXENS</div>
+  <h1>Spare The Shot</h1>
+</header>
+<nav class="navbar" aria-label="Main navigation">
+  <a href="Dawkins_CV_26.pdf">CV</a>
+  <a href="research.html">Research</a>
+  <a href="teaching.html">Teaching</a>
+  <a href="striking_vixens.html" aria-current="page">Spare The Shot</a>
+  <a href="index.html" class="right">Home</a>
+</nav>
+<main><p>Select your remaining pins, then explore a suggested release and arrow target. Identify estimated ball and pin collisions.</p>
+<div class="layout"><section class="card"><h2>1. Choose the standing pins</h2><div class="pins" id="pins" aria-label="Standing pins, viewed from the approach"></div><div class="actions"><button type="button" id="all">All pins</button><button type="button" id="none">Clear</button><button type="button" id="ten">10-pin spare</button><button type="button" id="seven">7-pin spare</button></div>
+<h2>2. Your bowler &amp; release</h2><form id="form"><div class="fields">
+<label>Handedness<select id="hand"><option value="right">Right-handed</option><option value="left">Left-handed</option></select></label>
+<label>Shot style<select id="style"><option value="straight">Straight spare shot</option><option value="hook">Hook</option></select></label>
+<label>Gender (optional)<select id="gender"><option>Prefer not to say</option><option>Woman</option><option>Man</option><option>Self-described</option></select></label>
+<label>Height (in, optional)<input id="height" type="number" min="20" max="98" step="0.5" placeholder="e.g. 67"></label>
+<label>Body weight (lb, optional)<input id="weight" type="number" min="33" max="772" placeholder="e.g. 155"></label>
+<label>Ball weight (lb)<input id="ballWeight" type="number" min="6" max="16" step="0.5" value="12" required></label>
+<label>Ball diameter (in)<input id="diameter" type="number" min="8.5" max="8.6" step="0.001" value="8.5" required></label>
+<label>Release speed (mph)<input id="speed" type="number" min="5" max="30" step="0.5" value="15" required></label>
+<label>Rev rate (rpm)<input id="rpm" type="number" min="0" max="600" step="10" value="200" required></label>
+<label>Oil level<select id="oil"><option value="1">Medium</option><option value="0.65">Heavy</option><option value="1.35">Light</option></select></label>
+<label>Foot-to-ball offset (boards)<input id="offset" type="number" min="0" max="15" step="0.5" value="5" required></label>
+<label>Approach drift (boards)<input id="drift" type="number" min="-15" max="15" step="0.5" value="0" required></label>
+</div><p class="small">Offset: distance from your sliding foot to the ball at release, toward your throwing hand. Drift: positive means toward higher board numbers. Measure these from your own shots.</p><button class="primary" type="submit">Find suggested shot</button></form>
+<details><summary>Collision model &amp; calibration</summary><p class="small">Ball and pins exchange momentum through two-dimensional collision impulses. Ball weight sets ball mass; pins use an assumed mass of 1.6 kg. Moving pins can strike other pins. Sliding friction slows pins; restitution controls bounce. A pin is classified as fallen when its simulated speed exceeds the adjustable toppling threshold. This is a proxy for tipping, not a three-dimensional tipping calculation.</p><p class="small">Standing pins use circular footprints; fallen pins use enlarged circular footprints to approximate their reach. Side-wall kickbacks are modeled only beside the pin deck (59–64 feet), not along the lane. Pins and the ball can rebound from these walls and collide again; objects entering the rear pit leave the simulation. Wall gap, restitution, friction, and toppling use fixed internal assumptions; they are no longer user-adjustable. Automatic exploratory trials vary those assumptions and release conditions within fixed ranges. Trial counts are not calibrated probabilities. Published 7–10 conversion statistics are shown separately; the simulator does not manufacture a successful collision by randomly applying those percentages. The model omits actual pin shapes, spin, vertical motion, and rear-pit rebounds. Defaults are assumptions, not measured bowling coefficients. The model needs calibration against many real shots before it can estimate conversion probabilities reliably.</p><p class="small">Speed and rev rate affect the uncalibrated approach curve; speed also sets impact velocity. Gender, height, and body weight do not determine release mechanics. The quick search includes thin hits as well as central hits. The detailed search tests release boards in one-board steps and aim offsets in 0.2-board steps across the contact width of every remaining pin, keeping side-wall routes in the search. It uses your current speed, hook, and collision settings without automatically increasing bounce to force a conversion. Pin deflection after impact is simulated, so the original approach line is checked for gutter clearance only up to its intended first contact. The search still evaluates a limited set of lines and optimizes estimated total pinfall. Failure to find a clearing line does not prove a configuration impossible. The drawn lane is compressed lengthwise.</p></details>
+</section><section class="card"><h2>3. Your practice line</h2><p class="small" id="convention"></p><svg id="lane" viewBox="-90 0 540 560" role="img" aria-label="Bowling lane with proposed ball trajectory"></svg><div class="metrics"><div class="metric">Start foot<strong id="start">—</strong>board</div><div class="metric">Release ball<strong id="release">—</strong>board</div><div class="metric">Arrow target<strong id="arrow">—</strong>board</div></div><p id="result" aria-live="polite"></p><p class="small" id="pinfall"></p><p id="strategy" class="small"></p><p id="rare-status" class="small" aria-live="polite"></p><p id="benchmark" class="small"></p><div class="actions"><button type="button" id="deep">Search thin hits &amp; rebounds</button></div><p id="search-status" class="small" aria-live="polite"></p><div class="actions"><button id="roll" class="primary" type="button">Roll ball</button><button type="button" id="print">Print plan</button></div><p class="small">Start foot is the suggested lateral board for your eventual sliding foot before your approach. Slide foot at the foul line: <span id="slide">—</span>. Approach distance, release technique, and approach timing are not inferred.</p><p class="small">Geometry reference: <a href="https://bowl.com/getmedia/08ef148d-c0e4-4e00-9e0d-855ba4729ad5/equipment-specs-manual.pdf" target="_blank" rel="noopener">USBC equipment specifications</a>. Arrow guide is shown approximately 15 feet downlane.</p></section></div>
+</main><script>
+'use strict';
+const PHYSICS=Object.freeze({bounce:0.35,friction:0.2,topple:0.65,wallBounce:0.5,wallGap:9,walls:'on'});
+const $=id=>document.getElementById(id), standing=new Set([1,2,3,4,5,6,7,8,9,10]);
+const pins=[{n:1,x:20,y:60},{n:2,x:20+6/ (41.5/39),y:60+10.392/12},{n:3,x:20-6/(41.5/39),y:60+10.392/12},{n:4,x:20+12/(41.5/39),y:60+20.784/12},{n:5,x:20,y:60+20.784/12},{n:6,x:20-12/(41.5/39),y:60+20.784/12},{n:7,x:20+18/(41.5/39),y:60+31.176/12},{n:8,x:20+6/(41.5/39),y:60+31.176/12},{n:9,x:20-6/(41.5/39),y:60+31.176/12},{n:10,x:20-18/(41.5/39),y:60+31.176/12}];
+let shot=null, frame=null;
+for(const row of [[7,8,9,10],[4,5,6],[2,3],[1]]){const div=document.createElement('div');div.className='row';for(const n of row){const b=document.createElement('button');b.type='button';b.className='pin';b.textContent=n;b.dataset.pin=n;b.setAttribute('aria-label','Pin '+n+' standing');b.setAttribute('aria-pressed','true');b.onclick=()=>{standing.has(n)?standing.delete(n):standing.add(n);update()};div.appendChild(b)}$('pins').appendChild(div)}
+function select(ns){standing.clear();ns.forEach(n=>standing.add(n));update()}
+$('all').onclick=()=>select(pins.map(p=>p.n));$('none').onclick=()=>select([]);$('ten').onclick=()=>select([10]);$('seven').onclick=()=>select([7]);
+function xAt(s,y){return s.release+s.slope*y+s.curve*Math.pow(Math.max(0,y-35)/25,2)}
+function contacts(s,radius){return pins.filter(p=>standing.has(p.n)&&Math.abs(xAt(s,p.y)-p.x)<=radius).map(p=>p.n)}
+
+// Reflect outward motion only; restitution in [0,1] cannot add kinetic energy.
+function bounceOffDeckWalls(b,w){
+ if(b.active===false||b.y<w.front||b.y>w.rear)return false;
+ const r=b.fallen?0.14:b.r;let bounced=false;
+ if(b.x-r<w.left){b.x=w.left+r;if(b.vx<0){b.vx=-b.vx*w.restitution;bounced=true}}
+ if(b.x+r>w.right){b.x=w.right-r;if(b.vx>0){b.vx=-b.vx*w.restitution;bounced=true}}
+ if(bounced)b.rebounded=true;
+ return bounced;
+}
+
+// SI units; circular collision proxies and an adjustable speed-based tipping proxy.
+function simulate(s,record=false,dt=0.002,variation={}){
+ const boardM=41.5/39*0.0254,footM=0.3048, speed=(+$('speed').value*0.44704)*(variation.speedFactor??1);
+ const slope=(s.slope+2*s.curve*(59-35)/(25*25))*boardM/footM;
+ const bodies=[{n:0,x:xAt(s,59)*boardM,y:59*footM,vx:speed*slope/Math.sqrt(1+slope*slope),vy:speed/Math.sqrt(1+slope*slope),m:+$('ballWeight').value*0.45359237,r:+$('diameter').value*0.0254/2,fallen:false}];
+ for(const p of pins.filter(p=>standing.has(p.n)))bodies.push({n:p.n,x:p.x*boardM,y:p.y*footM,ox:p.x*boardM,oy:p.y*footM,vx:0,vy:0,m:1.6,r:2.375*0.0254,fallen:false,cause:null});
+ const e=variation.bounce??PHYSICS.bounce,mu=variation.friction??PHYSICS.friction,threshold=variation.topple??PHYSICS.topple,frames=[],duration=3,wallHits=new Set(),wallOn=PHYSICS.walls==='on',wallGap=PHYSICS.wallGap*0.0254,wallE=variation.wallBounce??PHYSICS.wallBounce;
+ const snapshot=()=>bodies.map(b=>({n:b.n,x:b.x/boardM,y:b.y/footM,fallen:b.fallen}));
+ const classify=(b,other)=>{if(b.n&&!b.fallen&&Math.hypot(b.vx,b.vy)>=threshold){b.fallen=true;b.cause=other.n===0?'ball':'pin';b.wallAssisted=!!(b.rebounded||other.rebounded||b.reboundChain||other.reboundChain)}};
+ if(record)frames.push(snapshot());
+ for(let step=1;step<=Math.round(duration/dt);step++){
+  for(const b of bodies){if(b.active===false)continue;b.x+=b.vx*dt;b.y+=b.vy*dt;if(b.n){const v=Math.hypot(b.vx,b.vy),f=v?Math.max(0,1-mu*9.81*dt/v):0;b.vx*=f;b.vy*=f}}
+  for(const b of bodies){
+   if(b.y>64*footM){b.active=false;b.vx=0;b.vy=0;continue}
+   if(wallOn&&bounceOffDeckWalls(b,{left:0.5*boardM-wallGap,right:39.5*boardM+wallGap,front:59*footM,rear:64*footM,restitution:wallE})&&b.n)wallHits.add(b.n);
+  }
+  for(let pass=0;pass<2;pass++)for(let i=0;i<bodies.length;i++)for(let j=i+1;j<bodies.length;j++){
+   const a=bodies[i],b=bodies[j];if(a.active===false||b.active===false)continue;
+   const ra=a.fallen?0.14:a.r,rb=b.fallen?0.14:b.r,dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy),r=ra+rb;if(d>=r||d<1e-9)continue;
+   const nx=dx/d,ny=dy/d,inv=1/a.m+1/b.m,normal=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;
+   if(normal<0){const impulse=-(1+e)*normal/inv;a.vx-=impulse*nx/a.m;a.vy-=impulse*ny/a.m;b.vx+=impulse*nx/b.m;b.vy+=impulse*ny/b.m;if(a.rebounded||b.rebounded||a.reboundChain||b.reboundChain){a.reboundChain=true;b.reboundChain=true}classify(a,b);classify(b,a)}
+   const correction=Math.max(0,r-d-0.0001)*0.6/inv;a.x-=correction*nx/a.m;a.y-=correction*ny/a.m;b.x+=correction*nx/b.m;b.y+=correction*ny/b.m;
+  }
+  if(record&&step%Math.round(0.02/dt)===0)frames.push(snapshot());
+ }
+ const ps=bodies.slice(1),fallen=ps.filter(b=>b.fallen).map(b=>b.n).sort((a,b)=>a-b);
+ return {fallen,direct:ps.filter(b=>b.fallen&&b.cause==='ball').map(b=>b.n),secondary:ps.filter(b=>b.fallen&&b.cause==='pin').map(b=>b.n),remaining:ps.filter(b=>!b.fallen).map(b=>b.n),wallAssisted:ps.filter(b=>b.fallen&&b.wallAssisted).map(b=>b.n),wallHits:[...wallHits],frames,duration};
+}
+
+let searchGeneration=0;
+function candidateLines(detailed=false){
+ const left=$('hand').value==='left',hook=$('style').value==='hook';
+ const curve=hook?(left?-1:1)*Math.min(12,6*(+$('rpm').value/250)*Math.pow(15/+$('speed').value,2)*+$('oil').value):0;
+ const radius=(+$('diameter').value/2+2.375)/(41.5/39),out=[],seen=new Set();
+ const releaseStep=detailed?1:2,shiftStep=detailed?.2:.5;
+ for(let r=5;r<=35;r+=releaseStep){
+  const slide=r+(left?-1:1)*+$('offset').value,start=slide-(left?-1:1)*+$('drift').value;
+  if(slide<1||slide>39||start<1||start>39)continue;
+  for(const target of pins.filter(p=>standing.has(p.n))){
+   for(let i=0;i<=Math.ceil(2*radius/shiftStep);i++){
+    const shift=-radius+i*shiftStep;if(Math.abs(shift)>=radius)continue;
+    const c={release:r,slope:(target.x+shift-r-curve*Math.pow((target.y-35)/25,2))/target.y,curve,slide,start,target:target.n,impactOffset:shift};
+    // A trajectory may deflect after the first impact: don't reject its continued pre-impact line beyond that contact.
+    const contactY=target.y-Math.sqrt(Math.max(0,radius*radius-shift*shift))*(41.5/39)/12;
+    let safe=true;const edge=+$('diameter').value/2/(41.5/39);
+    for(let y=0;y<=contactY;y+=.25){const x=xAt(c,y);if(x<.5+edge||x>39.5-edge){safe=false;break}}
+    if(!safe)continue;
+    const key=c.release.toFixed(2)+':'+c.slope.toFixed(5);if(seen.has(key))continue;seen.add(key);
+    c.hits=contacts(c,radius);c.score=c.hits.length*100-Math.abs(shift)-Math.abs(r-20)*.02;
+    out.push(c);
+   }
+  }
+ }
+ return out;
+}
+function rankShot(c){
+ const sim=simulate(c);
+ // Prefer clearing more pins; among ties prefer less dependence on rebounds and a more central hit.
+ return {...c,sim,rank:sim.fallen.length*1000-sim.wallAssisted.length*.1+c.score*.01};
+}
+function optimize(){
+ const all=candidateLines(),sorted=[...all].sort((a,b)=>b.score-a.score),pool=sorted.slice(0,40);
+ // Uniform coverage preserves thin hits on each target, instead of pruning them by direct-contact count.
+ for(let i=0;i<100&&all.length;i++)pool.push(all[Math.floor(i*all.length/100)]);
+ let best=null;for(const c of pool){const evaluated=rankShot(c);if(!best||evaluated.rank>best.rank)best=evaluated}
+ if(best)best.sim=simulate(best,true);return best;
+}
+function showPlan(){
+ for(const id of ['start','release','arrow','slide'])$(id).textContent=shot?(id==='arrow'?board(xAt(shot,15)):board(shot[id])).toFixed(1):'—';
+ $('result').textContent=!standing.size?'Select at least one standing pin.':!$('form').checkValidity()?'Check the form: enter values within the allowed ranges.':!shot?'No lane-safe line found in this search. This does not establish that clearing the pins is impossible.':shot.sim.fallen.length===standing.size?'The model estimates all '+standing.size+' remaining pins will fall with this line. This is an experimental estimate, not a guarantee.':'Best searched line: estimated '+shot.sim.fallen.length+' of '+standing.size+' pins fall. No clearing shot found by this model; the configuration is not proven impossible.';
+ $('pinfall').textContent=shot?'Estimated fallen: '+(shot.sim.fallen.join(', ')||'none')+'. From ball impact: '+(shot.sim.direct.join(', ')||'none')+'. From pin impact: '+(shot.sim.secondary.join(', ')||'none')+'. Wall-assisted falls: '+(shot.sim.wallAssisted.join(', ')||'none')+'. Pins that rebounded: '+(shot.sim.wallHits.join(', ')||'none')+'. Estimated standing: '+(shot.sim.remaining.join(', ')||'none')+'.':'';
+ $('strategy').textContent=shot?'Searched line aims '+(Math.abs(shot.impactOffset)<.3?'near the center':(Math.abs(shot.impactOffset)*(41.5/39)).toFixed(1)+' inches to the '+(shot.impactOffset>0?'left':'right')+' of the center')+' of pin '+shot.target+' (viewed from the approach). '+(shot.sim.wallAssisted.length?'The predicted conversion relies on a side-wall rebound.':shot.sim.wallHits.length?'Pin rebounds occur in this simulation, but do not produce additional predicted falls.':'No wall-assisted pinfall is predicted for this line.')+(standing.has(7)&&standing.has(10)?' A 7–10 conversion needs highly specific pin action; use the detailed search to explore thin hits on either corner pin.':''):'';
+ $('benchmark').innerHTML=standing.size===2&&standing.has(7)&&standing.has(10)?'The 7–10 is convertible, but very rare. Historical professional benchmark: about 0.7% (<a href="https://bowl.com/making-impossible-splits" target="_blank" rel="noopener">USBC</a>); a different PBA sample reports 0.94% (<a href="https://www.pba.com/2024/november/executive-summary-2024-pba-string-pin-report" target="_blank" rel="noopener">PBA</a>). These are population benchmarks, not your personal odds or this line’s predicted probability.':'';$('roll').disabled=!shot;draw();
+}
+async function searchRebounds(){
+ if(!standing.size||!$('form').checkValidity())return;
+ cancelAnimationFrame(frame);const generation=++searchGeneration,lines=candidateLines(true);let best=shot;
+ $('deep').disabled=true;$('roll').disabled=true;
+ for(let i=0;i<lines.length;i++){
+  if(generation!==searchGeneration)return;
+  const evaluated=rankShot(lines[i]);if(!best||evaluated.rank>best.rank)best=evaluated;
+  if(i%12===0){$('search-status').textContent='Searching thin hits and rebound routes: '+(i+1)+' / '+lines.length+' lines…';await new Promise(resolve=>setTimeout(resolve,0))}
+ }
+ if(generation!==searchGeneration)return;
+ shot=best;if(shot)shot.sim=simulate(shot,true);showPlan();$('deep').disabled=false;void exploreRareTrials(generation,shot);
+ $('search-status').textContent='Detailed search finished: '+lines.length+' lines tested with your current settings. '+(shot&&shot.sim.fallen.length===standing.size?'A modeled clearing line was found.':'No clearing line was found; this is not a proof of impossibility.');
+}
+$('deep').onclick=searchRebounds;
+
+async function exploreRareTrials(generation,base){
+ if(!base||standing.size<2){$('rare-status').textContent='';return}
+ const candidates=candidateLines(false),targets=[...new Set(candidates.map(c=>c.target))];
+ const total=standing.size===2?256:96;let seed=7102026,cleared=0;
+ const rand=()=>{seed=(Math.imul(1664525,seed)+1013904223)>>>0;return seed/4294967296};
+ for(let i=0;i<total;i++){
+  if(generation!==searchGeneration)return;
+  // Mix variations of the selected line with thin-hit lines on every target.
+  const pool=candidates.filter(c=>c.target===targets[i%targets.length]&&Math.abs(c.impactOffset)>3);
+  const original=i%3&&pool.length?pool[Math.floor(rand()*pool.length)]:base;
+  const offset=(rand()-.5)*.6;let c={...original,slope:original.slope+offset/60};
+  const target=pins.find(p=>p.n===c.target),radius=(+$('diameter').value/2+2.375)/(41.5/39),delta=xAt(c,target.y)-target.x;
+  const contactY=target.y-Math.sqrt(Math.max(0,radius*radius-delta*delta))*(41.5/39)/12,edge=+$('diameter').value/2/(41.5/39);
+  for(let y=0;y<=contactY;y+=.2){const x=xAt(c,y);if(x<.5+edge||x>39.5-edge){c=original;break}}
+  const variation={speedFactor:.95+.1*rand(),bounce:.25+.2*rand(),wallBounce:.35+.3*rand(),friction:.12+.16*rand(),topple:.55+.2*rand()};
+  const sim=simulate(c,false,.002,variation);
+  if(sim.fallen.length===standing.size){cleared++}
+  if(i%8===0){$('rare-status').textContent='Exploring small release changes and collision uncertainty: '+(i+1)+' / '+total+' trials…';await new Promise(resolve=>setTimeout(resolve,0))}
+ }
+ if(generation!==searchGeneration)return;
+ $('rare-status').textContent='Exploratory simulations: '+cleared+' / '+total+' cleared all selected pins. '+(cleared?'These trial counts depend on uncalibrated assumptions and are not a measured conversion probability.':'No conversion observed in this sample; this does not imply a 0% real-world chance.')+' Rare outcomes may involve 3D pin motion or pit rebounds omitted by this model.';
+}
+
+function update(){searchGeneration++;$('deep').disabled=false;$('search-status').textContent='';$('rare-status').textContent='';cancelAnimationFrame(frame);shot=null;document.querySelectorAll('[data-pin]').forEach(b=>{const on=standing.has(+b.dataset.pin);b.setAttribute('aria-pressed',String(on));b.setAttribute('aria-label','Pin '+b.dataset.pin+(on?' standing':' removed'))});$('convention').textContent='Boards count from '+($('hand').value==='left'?'the left':'the right')+' gutter for your selected hand. Pins are viewed from the approach.';if($('form').checkValidity()&&standing.size)shot=optimize();showPlan();void exploreRareTrials(searchGeneration,shot)}
+function board(x){return $('hand').value==='left'?40-x:x}
+function px(x){return 40+(39.5-x)/39*280}function py(y){return 505-y/63*450}
+function draw(){const svg=$('lane');let h='<rect x="25" y="38" width="310" height="470" rx="12" fill="#0c1926"/><rect x="40" y="40" width="280" height="465" fill="#be9768"/>';for(let b=.5;b<=39.5;b++)h+='<path d="M '+px(b)+' 40 V 505" stroke="#a68155" stroke-width=".5"/>';h+='<path d="M40 505 H320" stroke="white" stroke-width="3"/><text x="180" y="547" text-anchor="middle" fill="#b8c9d8" font-size="12">Approach / foul line</text>';for(const b of [5,10,15,20,25,30,35])h+='<path d="M'+px(b)+' '+py(15)+' l-4 7 h8 Z" fill="#49382a"/><text x="'+px(b)+'" y="526" text-anchor="middle" fill="#b8c9d8" font-size="10">'+board(b)+'</text>';if(PHYSICS.walls==='on'){const gap=PHYSICS.wallGap/(41.5/39);for(const edge of [.5-gap,39.5+gap])h+='<path d="M'+px(edge)+' '+py(59)+' V'+py(64)+'" stroke="#8bc7ef" stroke-width="4"/>'}if(shot){let path='';for(let y=0;y<=63;y+=.25)path+=(y?' L':'M')+px(xAt(shot,y))+' '+py(y);h+='<path d="'+path+'" fill="none" stroke="#062d39" stroke-width="9" opacity=".4"/><path d="'+path+'" fill="none" stroke="#5be0bd" stroke-width="3" stroke-dasharray="7 4"/>'}for(const p of pins){h+='<g id="visual-pin-'+p.n+'"><circle cx="'+px(p.x)+'" cy="'+py(p.y)+'" r="11" fill="'+(standing.has(p.n)?'#fff':'#b9976f')+'" stroke="#544738" opacity="'+(standing.has(p.n)?1:.4)+'"/><text x="'+px(p.x)+'" y="'+(py(p.y)+4)+'" text-anchor="middle" fill="#172a39" font-size="11" font-weight="bold">'+p.n+'</text></g>'}if(shot)h+='<circle id="ball" cx="'+px(shot.release)+'" cy="505" r="12" fill="#123f69" stroke="#8bc7ef" stroke-width="2"/>';svg.innerHTML=h}
+$('form').onsubmit=e=>{e.preventDefault();clearTimeout(inputTimer);update()};let inputTimer;$('form').oninput=()=>{searchGeneration++;$('deep').disabled=true;clearTimeout(inputTimer);cancelAnimationFrame(frame);shot=null;$('roll').disabled=true;$('result').textContent='Recalculating collision estimate…';inputTimer=setTimeout(update,250)};$('form').onchange=()=>{clearTimeout(inputTimer);update()};$('print').onclick=()=>window.print();$('roll').onclick=()=>{if(!shot)return;cancelAnimationFrame(frame);draw();const current=shot,start=performance.now(),travel=59/(+$('speed').value*5280/3600);function tick(now){if(shot!==current)return;const elapsed=(now-start)/1000,ball=$('ball');if(elapsed<travel){const y=elapsed/travel*59;ball.setAttribute('cx',px(xAt(current,y)));ball.setAttribute('cy',py(y))}else{const t=elapsed-travel,states=current.sim.frames;const state=states[Math.min(states.length-1,Math.floor(t/0.02))];ball.setAttribute('cx',px(state[0].x));ball.setAttribute('cy',py(state[0].y));for(const b of state.slice(1)){const p=pins.find(p=>p.n===b.n),g=$('visual-pin-'+b.n);g.setAttribute('transform','translate('+(px(b.x)-px(p.x))+' '+(py(b.y)-py(p.y))+')');g.setAttribute('opacity',b.fallen?'0.4':'1')}}if(elapsed<travel+current.sim.duration)frame=requestAnimationFrame(tick)}frame=requestAnimationFrame(tick)};update();
+</script></body></html>
