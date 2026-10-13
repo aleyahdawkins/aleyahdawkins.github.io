@@ -234,7 +234,7 @@ async function exploreRareTrials(generation,base){
   if(i%8===0){$('rare-status').textContent='Exploring small release changes and collision uncertainty: '+(i+1)+' / '+total+' trials…';await new Promise(resolve=>setTimeout(resolve,0))}
  }
  if(generation!==searchGeneration)return;
- $('rare-status').textContent='Exploratory simulations: '+cleared+' / '+total+' cleared all selected pins. '+(cleared?'These trial counts depend on uncalibrated assumptions and are not a measured conversion probability.':'No conversion observed in this sample; this does not imply a 0% real-world chance.')+' Rare outcomes may involve 3D pin motion or pit rebounds omitted by this model.';
+ $('rare-status').textContent='Exploratory simulations: '+cleared+' / '+total+' cleared all selected pins. '+(cleared?'';
 }
 
 function update(){searchGeneration++;$('deep').disabled=false;$('search-status').textContent='';$('rare-status').textContent='';cancelAnimationFrame(frame);shot=null;document.querySelectorAll('[data-pin]').forEach(b=>{const on=standing.has(+b.dataset.pin);b.setAttribute('aria-pressed',String(on));b.setAttribute('aria-label','Pin '+b.dataset.pin+(on?' standing':' removed'))});$('convention').textContent='Boards count from '+($('hand').value==='left'?'the left':'the right')+' gutter for your selected hand. Pins are viewed from the approach.';if($('form').checkValidity()&&standing.size)shot=optimize();showPlan();void exploreRareTrials(searchGeneration,shot)}
